@@ -1,0 +1,21 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Local configuration
+local.properties
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Kotlin
+*.iml
+
+# Logs
+*.log
+
+# Sign keys
+*.jks
