@@ -79,8 +79,6 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(24.dp))
 
-        Text("Developer", style = MaterialTheme.typography.titleMedium)
-        Text("Built with ❤️ by Dickson")
 
         if (showClearTxDialog) {
             AlertDialog(

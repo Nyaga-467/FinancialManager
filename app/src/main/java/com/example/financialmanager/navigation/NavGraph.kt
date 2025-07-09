@@ -16,7 +16,7 @@ fun AppNavGraph(
     modifier: Modifier = Modifier,
     transactionViewModel: TransactionViewModel,
     budgetViewModel: BudgetViewModel,
-    themeViewModel: ThemeViewModel  // ✅ Add this line
+    themeViewModel: ThemeViewModel
 ) {
     NavHost(
         navController = navController,
@@ -24,22 +24,22 @@ fun AppNavGraph(
         modifier = modifier
     ) {
         composable(BottomNavItem.Dashboard.route) {
-            DashboardScreen(transactionViewModel)
+            DashboardScreen(
+                viewModel = transactionViewModel,
+                budgetViewModel = budgetViewModel // ✅ Added this
+            )
         }
-        composable(BottomNavItem.Add.route) {
+        composable(BottomNavItem.Transactions.route) {
             AddTransactionScreen(transactionViewModel)
         }
         composable(BottomNavItem.Budgets.route) {
             AddBudgetScreen(budgetViewModel)
         }
-        composable(BottomNavItem.Transactions.route) {
-            TransactionListScreen(transactionViewModel)
-        }
         composable(BottomNavItem.Settings.route) {
             SettingsScreen(
                 transactionViewModel = transactionViewModel,
                 budgetViewModel = budgetViewModel,
-                themeViewModel = themeViewModel  // ✅ Pass it in here
+                themeViewModel = themeViewModel
             )
         }
     }

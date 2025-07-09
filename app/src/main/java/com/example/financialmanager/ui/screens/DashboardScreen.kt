@@ -1,7 +1,5 @@
 package com.example.financialmanager.ui.screens
 
-
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -16,19 +14,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.financialmanager.data.model.Transaction
 import com.example.financialmanager.viewmodel.TransactionViewModel
+import com.example.financialmanager.viewmodel.BudgetViewModel
 
 @Composable
-fun DashboardScreen(viewModel: TransactionViewModel) {
+fun DashboardScreen(
+    viewModel: TransactionViewModel,
+    budgetViewModel: BudgetViewModel
+) {
     val transactions by viewModel.transactions.collectAsState()
+    val budgets by budgetViewModel.budgets.collectAsState()
 
     val income = transactions.filter { it.type == "income" }.sumOf { it.amount }
     val expenses = transactions.filter { it.type == "expense" }.sumOf { it.amount }
     val balance = income - expenses
+    val totalBudgetAmount = budgets.sumOf { it.amount }
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)) {
-
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
         Text("Dashboard", fontSize = 22.sp, fontWeight = FontWeight.Bold)
         Text("Hello there!", style = MaterialTheme.typography.titleMedium)
         Text("July 2025", style = MaterialTheme.typography.bodyMedium)
@@ -36,7 +41,12 @@ fun DashboardScreen(viewModel: TransactionViewModel) {
         Spacer(Modifier.height(16.dp))
 
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            SummaryCard(title = "Balance", amount = balance, color = Color(0xFF4F83F1))
+            SummaryCard(
+                title = "Balance",
+                amount = balance,
+                color = Color(0xFF4F83F1),
+                modifier = Modifier.weight(1f)
+            )
         }
 
         Spacer(Modifier.height(8.dp))
@@ -56,6 +66,16 @@ fun DashboardScreen(viewModel: TransactionViewModel) {
             )
         }
 
+        Spacer(Modifier.height(8.dp))
+
+        Row(modifier = Modifier.fillMaxWidth()) {
+            SummaryCard(
+                title = "Budgets",
+                amount = totalBudgetAmount,
+                color = Color(0xFF9C27B0), // Purple
+                modifier = Modifier.weight(1f)
+            )
+        }
 
         Spacer(Modifier.height(16.dp))
 
@@ -100,13 +120,17 @@ fun SummaryCard(title: String, amount: Double, color: Color, modifier: Modifier 
     }
 }
 
-
 @Composable
 fun TransactionItem(tx: Transaction) {
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 4.dp)) {
-        Row(modifier = Modifier.padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Column {
                 Text(tx.description, fontWeight = FontWeight.Bold)
                 Text(tx.category, style = MaterialTheme.typography.bodySmall)
