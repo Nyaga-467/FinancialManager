@@ -1,21 +1,21 @@
-# 💰 Financial Manager App
+#  Financial Manager App
 
 A modern Kotlin-based Android app for managing personal finances. Users can track income, expenses, and budgets in a clean, responsive UI built using Jetpack Compose and Material3. The app follows the MVVM architecture and stores data locally using Room.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 📊 Dashboard for viewing balance, income, and expenses
-- ➕ Add new income or expense transactions
-- 🗂️ Set budgets per category (monthly/weekly)
-- 🌗 Dark mode toggle
-- ⚙️ Settings to clear all transactions or budgets
-- 📦 Offline support using Room DB
+-  Dashboard for viewing balance, income, and expenses
+-  Add new income or expense transactions
+-  Set budgets per category (monthly/weekly)
+-  Dark mode toggle
+-  Settings to clear all transactions or budgets
+-  Offline support using Room DB
 
 ---
 
-## 🏗️ Tech Stack
+##  Tech Stack
 
 | Layer         | Technology            |
 |---------------|------------------------|
@@ -26,7 +26,7 @@ A modern Kotlin-based Android app for managing personal finances. Users can trac
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 FinancialManager/
 ├── app/
@@ -46,7 +46,7 @@ FinancialManager/
 
 ---
 
-## 🖼️ Screenshots
+##  Screenshots
 
 ![Screenshot_20250710_074543](https://github.com/user-attachments/assets/11b92978-9230-4a5f-82b6-5d3e1405622d)
 ![Screenshot_20250710_074543](https://github.com/user-attachments/assets/78751872-c222-4c2e-9c73-f8ac93adf39b)
@@ -54,7 +54,7 @@ FinancialManager/
 ![Screenshot_20250710_074439](https://github.com/user-attachments/assets/c7768c4b-614c-4a0b-b62c-7119bbe4338b)
 
 
-## 🛠️ How to Build
+##  How to Build
 
 1. Clone the repo:
    ```bash
@@ -69,5 +69,3 @@ Dickson Nyaga
 Built with ❤️ using Kotlin + Jetpack Compose
 
 
-License
-This project is licensed under the MIT License.
